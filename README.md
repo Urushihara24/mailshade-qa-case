@@ -5,6 +5,12 @@
 предупреждения о трекинговых ссылках). Отчёт и таблица находок приняты заказчиком;
 данный репозиторий — расширенная документация кейса, оформленная по стандартам QA-документации.
 
+| Scope | Investigation | Result |
+|---|---|---|
+| Chrome extension, Gmail integration, UX and localization | Exploratory sessions, CSV and locale analysis, screenshots and video evidence | 19 findings, including major link-unwrapping and event-deduplication risks |
+
+**Start here:** [final summary](docs/06-final-summary.md) · [bug reports](docs/03-bug-reports.md) · [evidence index](evidence/EVIDENCE_INDEX.md)
+
 ## Паспорт кейса
 
 | Параметр | Значение |
