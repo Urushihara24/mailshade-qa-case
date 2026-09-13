@@ -1,19 +1,19 @@
-# Шаблон баг-репорта
+# Bug Report Template
 
-**ID:** BUG-N
-**Название:** [что сломано] + [где] + [при каком условии]
-**Severity:** Critical / Major / Minor / Cosmetic
-**Тип:** Functional / Visual / Data / Copy
-**Клиент/URL:** [почтовый клиент, экран, URL без личных данных]
-**Окружение:** [ОС, браузер, версия расширения]
+**ID:** BUG-N  
+**Title:** [what is broken] + [where] + [under which condition]  
+**Severity:** Critical / Major / Minor / Cosmetic  
+**Type:** Functional / Visual / Data / Copy  
+**Client/URL:** [mail client, screen, URL without personal data]  
+**Environment:** [OS, browser, extension version]
 
-**Шаги воспроизведения:**
+**Steps to reproduce:**
 1. …
 2. …
 
-**Ожидаемый результат:** …
-**Фактический результат:** …
-**Воспроизводимость:** always / X из Y / once
-**Доказательства:** [имена файлов скриншотов/видео из evidence/]
-**Примечания/гипотеза:** [возможная причина, подсказка разработчику]
-**Статус:** Reported / Confirmed / Fixed / Won't fix
+**Expected result:** …  
+**Actual result:** …  
+**Reproducibility:** always / X of Y / once  
+**Evidence:** [screenshot/video filenames from `evidence/`]  
+**Notes / hypothesis:** [possible cause or developer hint]  
+**Status:** Reported / Confirmed / Fixed / Won't fix
