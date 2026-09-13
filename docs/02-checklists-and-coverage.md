@@ -1,60 +1,60 @@
-# 02 · Чек-листы и покрытие
+# 02 · Checklists and Coverage
 
-Traceability: пункт брифа → проверки → результат/находка.
+Traceability: brief item → checks → result/finding.
 
-## Блок 1. Установка и разрешения
-| # | Проверка | Статус | Ссылка |
+## Block 1. Installation and permissions
+| # | Check | Status | Reference |
 |---|---|---|---|
-| 1.1 | Чистая установка, онбординг | ✔ | UX-2, UX-8 |
-| 1.2 | Включение одного клиента (Gmail) | ✔ | UX-1 |
-| 1.3 | Отзыв и повторная выдача разрешения | ✔ | «Проверено» |
-| 1.4 | Поведение на неподключённом сайте | ✔ | — |
+| 1.1 | Clean installation and onboarding | ✔ | UX-2, UX-8 |
+| 1.2 | Enable one client, Gmail | ✔ | UX-1 |
+| 1.3 | Revoke and re-grant permission | ✔ | “Verified” |
+| 1.4 | Behavior on an unconnected site | ✔ | — |
 
-## Блок 2. Письма: детект
-| # | Проверка | Статус | Ссылка |
+## Block 2. Email tracker detection
+| # | Check | Status | Reference |
 |---|---|---|---|
-| 2.1 | Маркетинговые письма: баннер/«глаз»/счётчики | ✔ | «Проверено» |
-| 2.2 | Ложные срабатывания на обычных письмах | ✔ нет срабатываний | «Проверено» |
-| 2.3 | Дубли/инфляция событий | ✖ баг | UX-3 |
-| 2.4 | Консистентность баннер ↔ отчёт ↔ popup | ✔ | «Проверено» |
+| 2.1 | Marketing emails: banner / eye / counters | ✔ | “Verified” |
+| 2.2 | False positives on regular emails | ✔ no detections | “Verified” |
+| 2.3 | Duplicate/event inflation | ✖ defect | UX-3 |
+| 2.4 | Banner ↔ report ↔ popup consistency | ✔ | “Verified” |
 
-## Блок 3. Вкладки и навигация
-| # | Проверка | Статус | Ссылка |
+## Block 3. Tabs and navigation
+| # | Check | Status | Reference |
 |---|---|---|---|
-| 3.1 | Несколько вкладок | ✔ | «Проверено» |
-| 3.2 | Папки, цепочки | ✔ | «Проверено» |
-| 3.3 | Два клиента параллельно | N/A | только Gmail |
+| 3.1 | Multiple tabs | ✔ | “Verified” |
+| 3.2 | Folders and threads | ✔ | “Verified” |
+| 3.3 | Two clients in parallel | N/A | Gmail only |
 
-## Блок 4. Перезагрузка и сеть
-| # | Проверка | Статус | Ссылка |
+## Block 4. Reload and network
+| # | Check | Status | Reference |
 |---|---|---|---|
-| 4.1 | Перезагрузка страницы | ✔ | «Проверено» |
-| 4.2 | Полный перезапуск Chrome | ✔ | «Проверено» |
-| 4.3 | Slow 3G | ✔ | «Проверено» |
-| 4.4 | Консистентность данных после перезапусков | ✔ | «Проверено» |
+| 4.1 | Page reload | ✔ | “Verified” |
+| 4.2 | Full Chrome restart | ✔ | “Verified” |
+| 4.3 | Slow 3G | ✔ | “Verified” |
+| 4.4 | Data consistency after restarts | ✔ | “Verified” |
 
-## Блок 5. Popup и отчёт
-| # | Проверка | Статус | Ссылка |
+## Block 5. Popup and report
+| # | Check | Status | Reference |
 |---|---|---|---|
 | 5.1 | Popup | ✔ | UX-9 |
-| 5.2 | Фильтры периода/клиентов | ✔ | UX-1 |
-| 5.3 | Allowlist-домены | ✔ добавление | Q-3 |
-| 5.4 | Очистка с подтверждением | ✔ | «Проверено» |
-| 5.5 | Экспорт CSV/JSON | ✔ | BUG-2 (данные), F-11* |
-| 5.6 | Пустые состояния | ✖ артефакт | COS-1, COS-2 |
+| 5.2 | Period/client filters | ✔ | UX-1 |
+| 5.3 | Domain allowlist | ✔ add flow | Q-3 |
+| 5.4 | Clear with confirmation | ✔ | “Verified” |
+| 5.5 | CSV/JSON export | ✔ | BUG-2 data, F-11* |
+| 5.6 | Empty states | ✖ artifact | COS-1, COS-2 |
 
-## Блок 6. Tracking-link warning
-| # | Проверка | Статус | Ссылка |
+## Block 6. Tracking-link warning
+| # | Check | Status | Reference |
 |---|---|---|---|
-| 6.1 | Warning на обёртке | ✖ баг ядра | BUG-1, UX-7 |
+| 6.1 | Warning on tracking wrapper | ✖ core defect | BUG-1, UX-7 |
 
-## Блок 7. Console
-| # | Проверка | Статус | Ссылка |
+## Block 7. Console
+| # | Check | Status | Reference |
 |---|---|---|---|
-| 7.1 | Явные ошибки расширения | ✔ ошибок нет | «Проверено» |
+| 7.1 | Explicit extension errors | ✔ no errors | “Verified” |
 
-## Блок 8. Exploratory
-- Сессии: темы/языки, выкл/вкл расширения, правый клик, границы периодов, анализ локали и CSV.
-- Находки сессий: BUG-3, UX-4…UX-6, COPY-1…COPY-4, Q-4, Q-5.
+## Block 8. Exploratory
+- Sessions: themes/languages, extension disable/enable, right click, period boundaries, locale and CSV analysis.
+- Session findings: BUG-3, UX-4…UX-6, COPY-1…COPY-4, Q-4, Q-5.
 
-*F-11 — наблюдение о качестве CSV (нет URL/ID события); вошло в вопросы разработчику.
+*F-11 is an observation about CSV quality: no URL/event ID is included. It was moved into the developer questions.
