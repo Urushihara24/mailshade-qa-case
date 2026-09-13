@@ -1,31 +1,30 @@
-# Индекс доказательств
+# Evidence Index
 
-Правило кейса: у каждой находки ≥ 1 доказательство. Имена файлов = имена в отчётах.
-Если пункт снимался видео, файл имеет то же имя с расширением `.mp4`.
+Case rule: every finding has at least one supporting artifact. Filenames match the names referenced in reports. If an item was captured on video, the file uses the same base name with the `.mp4` extension.
 
-| Файл | Находки | Комментарий |
+| File | Findings | Comment |
 |---|---|---|
-| warning_same_urls.png | BUG-1, UX-7 | warning с идентичными URL |
-| dashboard_chart_utc.png | BUG-2 | график «5 авг.» при таблице 06.08 |
-| export.csv | BUG-2, UX-3, Q-6 | UTC-таймстампы, батчи, строки-близнецы |
-| video_flicker_artifact.mp4 | BUG-3, UX-3 | мигание инъекций + рост батчей |
-| onboarding_clients.png | UX-1, UX-8 | шаг 2 онбординга |
-| dashboard_filters.png | UX-1 | все 6 чекбоксов |
-| settings_clients.png | UX-1 | включён только Gmail |
-| onboarding_trial.png | UX-2, Q-4 | триал + поздний тост |
-| dashboard_74.png | UX-3 | 44+30 после переоткрытий |
-| activity_table.png | UX-4, UX-5, COS-3 | таблица активности |
-| context_menu.png | UX-6 | меню внутри письма |
-| popup.png | UX-9 | KPI popup |
-| dashboard.png | UX-9 | KPI дашборда |
-| empty_dashboard.png | COS-1, COS-2 | точка + «↔ 0%» |
-| senders_empty.png | COS-1 | «Пока никого» с точкой |
-| about.png | COPY-1 | версия без контактов |
-| upgrade.png | COPY-2, COPY-4 | прайс и Pro-список |
-| locales_ru_messages.json | COPY-3, COPY-4, Q-2 | дамп локали |
+| warning_same_urls.png | BUG-1, UX-7 | warning with identical URLs |
+| dashboard_chart_utc.png | BUG-2 | chart shows “5 Aug.” while the table shows 06.08 |
+| export.csv | BUG-2, UX-3, Q-6 | UTC timestamps, event batches, near-identical rows |
+| video_flicker_artifact.mp4 | BUG-3, UX-3 | injection flicker + batch growth |
+| onboarding_clients.png | UX-1, UX-8 | onboarding step 2 |
+| dashboard_filters.png | UX-1 | all six checkboxes selected |
+| settings_clients.png | UX-1 | only Gmail enabled |
+| onboarding_trial.png | UX-2, Q-4 | trial activation + delayed toast |
+| dashboard_74.png | UX-3 | 44+30 after repeated opens |
+| activity_table.png | UX-4, UX-5, COS-3 | activity table |
+| context_menu.png | UX-6 | menu inside an opened email |
+| popup.png | UX-9 | popup KPI labels |
+| dashboard.png | UX-9 | dashboard KPI labels |
+| empty_dashboard.png | COS-1, COS-2 | extra period + “↔ 0%” |
+| senders_empty.png | COS-1 | “No one yet” with extra period |
+| about.png | COPY-1 | version shown without contacts |
+| upgrade.png | COPY-2, COPY-4 | pricing and Pro feature list |
+| locales_ru_messages.json | COPY-3, COPY-4, Q-2 | locale dump |
 | settings_domains.png | Q-3 | allowlist |
-| gmail_banner.png | «Проверено» | баннер «пиксели: 0; ссылки: 15» |
-| theme_light.png, lang_en.png | «Проверено» | темы/языки |
-| confirm_dialog.png | «Проверено» | диалог очистки |
+| gmail_banner.png | “Verified” | banner showing “pixels: 0; links: 15” |
+| theme_light.png, lang_en.png | “Verified” | themes/languages |
+| confirm_dialog.png | “Verified” | clear-confirmation dialog |
 
-Папки: `screenshots/` (png), `videos/` (mp4), корень evidence/ (csv, json).
+Folders: `screenshots/` for PNG files, `videos/` for MP4 files, and the `evidence/` root for CSV/JSON data.
