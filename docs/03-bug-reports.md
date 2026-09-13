@@ -1,66 +1,61 @@
-# 03 · Баг-репорты
+# 03 · Bug Reports
 
-Статусы всех репортов на момент публикации: **Reported** (переданы заказчику).
-Шаблон — [templates/bug-report.md](../templates/bug-report.md).
-
----
-
-**ID:** BUG-1
-**Название:** Link warning не раскрывает реальный адрес (unwrap не работает для Customer.io)
-**Severity:** Major · **Тип:** Functional / Data
-**Клиент/URL:** Gmail, письмо notifications@mail.remotehunter.com (обёртка e.customeriomail.com)
-**Окружение:** Zorin OS 18.1 / Chrome 149.0.7827.155 / Mailshade 1.0.5
-
-**Шаги воспроизведения:**
-1. Открыть маркетинговое письмо RemoteHunter в Gmail.
-2. Кликнуть по ссылке «Apply Now» (href — обёртка `e.customeriomail.com/e/c/<base64>`).
-
-**Ожидаемый результат:** поле «Реальный адрес» показывает распакованный пункт назначения
-(`https://www.remotehunter.com/apply-with-ai/…` — href лежит в base64 обёртки и извлекается тривиально).
-**Фактический результат:** «Исходный URL» и «Реальный адрес» идентичны (wrapper);
-кнопка «Открыть напрямую» не гарантирует обход трекера. Проверено на 2 разных ссылках.
-**Воспроизводимость:** 2/2.
-**Доказательства:** `warning_same_urls.png`; ручная декодировка base64 (реальные адреса получены за минуту).
-**Примечания/гипотеза:** детект срабатывает, извлечение пункта назначения не выполняется либо не выводится;
-формат обёртки стандартный (Customer.io), unwrap реализуем. Усугубляется неочевидностью кнопок (UX-7).
-**Статус:** Reported.
+Status of all reports at publication time: **Reported** and delivered to the client.  
+Template: [templates/bug-report.md](../templates/bug-report.md).
 
 ---
 
-**ID:** BUG-2
-**Название:** График бакетирует события по UTC-дню, таблица — по локальному
-**Severity:** Minor · **Тип:** Data / Visual
-**Клиент/URL:** Gmail / дашборд отчёта
-**Окружение:**同上 (TZ-нюанс окружения см. 08)
+**ID:** BUG-1  
+**Title:** Link warning does not reveal the real destination address; Customer.io unwrap does not work  
+**Severity:** Major · **Type:** Functional / Data  
+**Client/URL:** Gmail, email from notifications@mail.remotehunter.com using an `e.customeriomail.com` wrapper  
+**Environment:** Zorin OS 18.1 / Chrome 149.0.7827.155 / Mailshade 1.0.5
 
-**Шаги воспроизведения:**
-1. Открыть письма после полуночи по местному времени (события 00:5x–01:1x, 06.08).
-2. Сравнить дату в таблице «Недавняя активность», ось X графика и CSV.
+**Steps to reproduce:**
+1. Open a RemoteHunter marketing email in Gmail.
+2. Click the “Apply Now” link whose href is an `e.customeriomail.com/e/c/<base64>` wrapper.
 
-**Ожидаемый результат:** таблица и график показывают одну дату.
-**Фактический результат:** таблица — 06.08 (local); CSV — `2026-08-05T22:5xZ` (UTC, корректно);
-график — точка на «5 авг.» (UTC-день). Периоды «Сегодня» в popup и дашборде считают по local и консистентны.
-**Воспроизводимость:** always для событий после полуночи при TZ>0.
-**Доказательства:** `dashboard_chart_utc.png`, `export.csv`.
-**Примечания/гипотеза:** хранение в UTC и local-таблица корректны; дефектна только агрегация графика.
-**Статус:** Reported.
+**Expected result:** the “Real address” field shows the unwrapped destination, such as `https://www.remotehunter.com/apply-with-ai/…`; the target href is present in the base64 wrapper and can be extracted directly.  
+**Actual result:** “Original URL” and “Real address” are identical and both show the wrapper; the “Open directly” action therefore does not guarantee tracking bypass. Reproduced on two different links.  
+**Reproducibility:** 2/2.  
+**Evidence:** `warning_same_urls.png`; manual base64 decoding, which produced the real addresses within a minute.  
+**Notes / hypothesis:** detection triggers correctly, but destination extraction is either not performed or not surfaced. The wrapper format is standard Customer.io and is technically unwrap-able. The issue is aggravated by unclear button semantics, tracked as UX-7.  
+**Status:** Reported.
 
 ---
 
-**ID:** BUG-3
-**Название:** Нестабильная отрисовка инъекций: «глаз» и баннер мигают, контент письма дублируется при переходах
-**Severity:** Minor · **Тип:** Visual
-**Клиент/URL:** Gmail (список писем и открытое письмо)
+**ID:** BUG-2  
+**Title:** Chart buckets events by UTC day while the table uses local date  
+**Severity:** Minor · **Type:** Data / Visual  
+**Client/URL:** Gmail / report dashboard  
+**Environment:** same as above; see document 08 for the timezone nuance
 
-**Шаги воспроизведения:**
-1. Открыть входящие с письмами RemoteHunter.
-2. Открыть маркетинговое письмо; вернуться в список; открыть снова.
-3. Наблюдать за «глазом» в строках и баннером «В этом письме обнаружен трекинг…».
+**Steps to reproduce:**
+1. Open emails shortly after local midnight, producing events around 00:5x–01:1x on 06.08.
+2. Compare the date in “Recent activity”, the chart X-axis, and the CSV export.
 
-**Ожидаемый результат:** «глаз» и баннер рендерятся один раз и стабильно.
-**Фактический результат:** «глаз» исчезает/появляется; баннер сворачивается/пропадает/разворачивается;
-в моменты переходов контент письма дублируется (ghosting). На счётчики не влияет (проверено отдельно).
-**Воспроизводимость:** always (видео).
-**Доказательства:** `video_flicker_artifact.mp4` (заодно демонстрирует рост батчей для UX-3).
-**Примечания/гипотеза:** повторная инъекция на мутации DOM Gmail без идемпотентности.
-**Статус:** Reported.
+**Expected result:** table and chart display the same calendar date.  
+**Actual result:** the table shows 06.08 local time; CSV contains `2026-08-05T22:5xZ`, which is correct UTC; the chart plots the point under “5 Aug.” using the UTC day. “Today” periods in popup and dashboard use local time and remain consistent with each other.  
+**Reproducibility:** always for events after midnight when TZ > 0.  
+**Evidence:** `dashboard_chart_utc.png`, `export.csv`.  
+**Notes / hypothesis:** UTC storage and the local-time table are correct; only chart aggregation is inconsistent.  
+**Status:** Reported.
+
+---
+
+**ID:** BUG-3  
+**Title:** Injected UI renders unstably: eye indicator and banner flicker, email content ghosts during transitions  
+**Severity:** Minor · **Type:** Visual  
+**Client/URL:** Gmail inbox and opened email
+
+**Steps to reproduce:**
+1. Open the inbox containing RemoteHunter emails.
+2. Open a marketing email, return to the inbox, and open it again.
+3. Observe the eye indicator in email rows and the “Tracking detected in this email…” banner.
+
+**Expected result:** the eye indicator and banner render once and remain stable.  
+**Actual result:** the eye disappears/reappears; the banner collapses, disappears, and expands; email content temporarily duplicates during transitions. Counter values are not affected, which was verified separately.  
+**Reproducibility:** always in the captured video.  
+**Evidence:** `video_flicker_artifact.mp4`, which also demonstrates batch growth related to UX-3.  
+**Notes / hypothesis:** repeated injection on Gmail DOM mutations without idempotent rendering.  
+**Status:** Reported.
