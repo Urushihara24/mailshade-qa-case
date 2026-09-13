@@ -1,73 +1,69 @@
-# 01 · Тест-план
+# 01 · Test Plan
 
-| Мета | |
+| Metadata | |
 |---|---|
-| Версия документа | 1.0 |
-| Дата | 2026-08-06 |
-| Автор | Vsevolod (QA) |
-| Основание | Бриф заказчика (2 итерации: базовый прогон + расширенный) |
+| Document version | 1.0 |
+| Date | 2026-08-06 |
+| Author | Vsevolod (QA) |
+| Source | Client brief, two iterations: baseline run + expanded run |
 
-## 1. Цели
+## 1. Goals
 
-1. Проверить пользовательские сценарии расширения Mailshade в реальном окружении.
-2. Выявить функциональные дефекты, UX-проблемы, визуальные и текстовые несогласованности.
-3. Собрать воспроизводимые доказательства по каждой находке.
-4. Дать заказчику резюме рисков и целостное впечатление о продукте.
+1. Validate Mailshade extension user scenarios in a real environment.
+2. Identify functional defects, UX problems, visual inconsistencies, and copy issues.
+3. Collect reproducible evidence for every finding.
+4. Provide the client with a concise risk summary and a holistic product assessment.
 
-## 2. Скоуп
+## 2. Scope
 
 ### In scope
-- Чистая установка, онбординг, модель разрешений (выдача/отзыв/повторная выдача).
-- Детект трекеров: баннер, «глаз»-индикатор, счётчики; ложные срабатывания; дубли.
-- Отчёт: фильтры, периоды, пустые состояния, обновление, очистка, экспорт (CSV/JSON).
-- Настройки: все секции, темы, языки, allowlist-домены, списки отправителей.
-- Tracking-link warning на естественно встреченной обёртке.
-- Popup; контекстное меню; перезагрузка/перезапуск; медленная сеть; Console.
-- Exploratory-сессии (суммарно ≥ 60 минут) с намеренным нарушением последовательностей.
-- Анализ публичных ресурсов расширения: локаль-каталог, CSV-экспорт.
+- Clean installation, onboarding, and permission model: grant, revoke, and re-grant.
+- Tracker detection: banner, eye indicator, counters, false positives, and duplicates.
+- Report: filters, periods, empty states, refresh, clear, and CSV/JSON export.
+- Settings: all sections, themes, languages, allowlisted domains, and sender lists.
+- Tracking-link warning on a naturally encountered tracking wrapper.
+- Popup, context menu, reload/restart, slow network, and Console.
+- Exploratory sessions totaling ≥ 60 minutes with deliberate sequence disruption.
+- Analysis of public extension resources: locale catalog and CSV export.
 
-### Out of scope (по брифу)
-- Платная активация и стресс-тест 1000+ трекеров.
-- Второй почтовый клиент (недоступен; помечено N/A, не как пропуск).
-- Автоматизированное тестирование.
+### Out of scope — per brief
+- Paid activation and stress testing with 1000+ trackers.
+- A second mail client, which was unavailable and marked N/A rather than omitted.
+- Automated testing.
 
-## 3. Стратегия и техники
+## 3. Strategy and techniques
 
-- Checklist-based testing по блокам брифа (см. 02).
-- Exploratory testing: сессии с чартерами «сломать последовательность», «граничные состояния»,
-  «консистентность данных между поверхностями».
-- Negative/edge: пустые состояния, снятие/возврат фильтров, невалидный ввод в формах.
-- Data consistency: сверка одних метрик в popup ↔ дашборд ↔ баннер ↔ CSV.
-- i18n/UX-ревью: RU/EN, светлая/тёмная тема, тон и терминология.
-- Статический анализ ресурсов: `_locales/ru/messages.json` (скрытые фичи, битые пары ключ↔текст).
+- Checklist-based testing by brief sections; see document 02.
+- Exploratory testing using charters such as “break the sequence”, “boundary states”, and “data consistency across surfaces”.
+- Negative/edge testing: empty states, removing/restoring filters, and invalid form input.
+- Data consistency: compare the same metrics across popup ↔ dashboard ↔ banner ↔ CSV.
+- i18n/UX review: RU/EN, light/dark theme, tone, and terminology.
+- Static resource analysis: `_locales/ru/messages.json` for hidden features and broken key↔text pairs.
 
-## 4. Критерии
+## 4. Criteria
 
-- **Входные**: расширение установлено из CWS; тестовый аккаунт Gmail; девтулс доступны.
-- **Выходные**: покрыты все пункты брифа либо честно помечены N/A/не проверено;
-  по каждой находке — шаги, ожидание/факт, воспроизводимость, доказательство.
+- **Entry:** extension installed from CWS; Gmail test account available; DevTools accessible.
+- **Exit:** all brief items are covered or honestly marked N/A / not tested; every finding includes steps, expected/actual behavior, reproducibility, and evidence.
 
-## 5. Классификация серьёзности
+## 5. Severity classification
 
-| Severity | Определение | Примеры в кейсе |
+| Severity | Definition | Examples in this case |
 |---|---|---|
-| Critical | Потеря данных, безопасность, блокирующий сценарий | — |
-| Major | Ядровая функция не выполняет обещанное; вводящие в заблуждение данные | BUG-1, UX-3 |
-| Minor | Некритичный дефект поведения/текста, влияет на доверие или удобство | BUG-2, BUG-3, UX-1… |
-| Cosmetic | Визуальные артефакты без влияния на функцию | COS-1…3 |
+| Critical | Data loss, security issue, blocking scenario | — |
+| Major | A core feature does not deliver its promise, or data is materially misleading | BUG-1, UX-3 |
+| Minor | Non-critical behavior/copy defect affecting trust or usability | BUG-2, BUG-3, UX-1… |
+| Cosmetic | Visual artifact with no functional impact | COS-1…3 |
 
-Priority не присваивалась (решает владелец продукта); в отчёте указана только severity —
-осознанное решение, зафиксированное здесь.
+Priority was intentionally not assigned because prioritization belongs to the product owner. The report includes severity only; this is a deliberate documented decision.
 
-## 6. Риски самого тестирования и митигации
+## 6. Testing risks and mitigations
 
-| Риск | Митигация |
+| Risk | Mitigation |
 |---|---|
-| Автообновление расширения во время теста (1.0.3 → 1.0.5) | Версия зафиксирована в окружении; вопрос Q-1 поднят заказчику |
-| Нестабильность таймзоны окружения (ожидается +3, факт +2) | Арифметически сверено по CSV/local/графику; зафиксировано в окружении |
-| Один почтовый клиент | Параллельные клиенты помечены N/A; компенсировано вкладками/тредами |
+| Extension auto-update during testing, 1.0.3 → 1.0.5 | Version recorded in environment; Q-1 raised to the client |
+| Environment timezone instability, expected +3 but observed +2 | Cross-checked arithmetically using CSV/local/chart data and documented in environment notes |
+| Only one mail client available | Parallel-client cases marked N/A and partially compensated with multiple tabs/threads |
 
-## 7. Артефакты
+## 7. Artifacts
 
-Таблица находок (Excel), текстовый отчёт (Word/Doc), папка доказательств с индексом,
-генераторы отчётов, данный репозиторий.
+Findings spreadsheet, written report, indexed evidence folder, report generators, and this repository.
