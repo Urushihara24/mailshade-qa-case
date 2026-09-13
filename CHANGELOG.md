@@ -1,6 +1,5 @@
 # Changelog
 
 ## 1.0.0 — 2026-08-06
-- Первичная публикация кейса.
-- Состав: тест-план, чек-листы, 19 находок, 5 вопросов, итоговый отчёт, ретроспектива,
-  индекс доказательств, генераторы отчётов (Word/Excel).
+- Initial publication of the case.
+- Included: test plan, checklists, 19 findings, 6 developer questions, final report, retrospective, evidence index, and Word/Excel report generators.
