@@ -1,6 +1,6 @@
 # QA Case: Manual Testing of the Mailshade Chrome Extension
 
-Portfolio case based on real freelance work: user-facing and exploratory testing of the Mailshade extension (tracking-pixel blocking in webmail, local reporting, and tracking-link warnings). The report and findings table were accepted by the client; this repository contains an expanded version of the case documented using structured QA practices.
+QA case based on real freelance work: user-facing and exploratory testing of the Mailshade extension (tracking-pixel blocking in webmail, local reporting, and tracking-link warnings). The report and findings table were accepted by the client; this repository contains an expanded version of the case documented using structured QA practices.
 
 <p align="center">
   <img src="https://img.shields.io/badge/Chrome-Extension-4285F4?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Chrome">
@@ -21,7 +21,7 @@ Portfolio case based on real freelance work: user-facing and exploratory testing
 |---|---|
 | Product | Mailshade, Chrome Web Store public build |
 | Work type | Manual user-facing testing + exploratory testing |
-| Role | QA tester and documentation author |
+| Role | QA Engineer |
 | OS / browser | Zorin OS 18.1 Education (Linux) / Chrome 149.0.7827.155 (64-bit) |
 | Extension version | 1.0.5; the brief specified 1.0.3, and the mismatch is documented in Q-1 |
 | Mail client | Gmail, test account |
