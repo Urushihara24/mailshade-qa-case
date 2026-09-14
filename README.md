@@ -1,6 +1,6 @@
-# QA Case: Manual Testing of the Mailshade Chrome Extension
+# Mailshade Chrome Extension — Commercial QA Project
 
-QA case based on real freelance work: user-facing and exploratory testing of the Mailshade extension (tracking-pixel blocking in webmail, local reporting, and tracking-link warnings). The report and findings table were accepted by the client; this repository contains an expanded version of the case documented using structured QA practices.
+Paid freelance QA engagement covering user-facing and exploratory testing of the Mailshade extension: tracking-pixel blocking in webmail, local reporting, and tracking-link warnings. The report and findings table were accepted by the client; this repository contains an expanded version of the QA documentation from that engagement.
 
 <p align="center">
   <img src="https://img.shields.io/badge/Chrome-Extension-4285F4?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Chrome">
@@ -15,12 +15,12 @@ QA case based on real freelance work: user-facing and exploratory testing of the
 
 **Start here:** [final summary](docs/06-final-summary.md) · [bug reports](docs/03-bug-reports.md) · [evidence index](evidence/EVIDENCE_INDEX.md)
 
-## Case profile
+## Project profile
 
 | Parameter | Value |
 |---|---|
 | Product | Mailshade, Chrome Web Store public build |
-| Work type | Manual user-facing testing + exploratory testing |
+| Work type | Paid manual user-facing testing + exploratory testing |
 | Role | QA Engineer |
 | OS / browser | Zorin OS 18.1 Education (Linux) / Chrome 149.0.7827.155 (64-bit) |
 | Extension version | 1.0.5; the brief specified 1.0.3, and the mismatch is documented in Q-1 |
@@ -51,12 +51,12 @@ QA case based on real freelance work: user-facing and exploratory testing of the
 | [04-ux-copy-findings.md](docs/04-ux-copy-findings.md) | UX / Cosmetic / Copy findings |
 | [05-questions-to-developer.md](docs/05-questions-to-developer.md) | Questions requiring development input |
 | [06-final-summary.md](docs/06-final-summary.md) | Final report version delivered to the client |
-| [07-retrospective.md](docs/07-retrospective.md) | What strengthened and weakened the case |
+| [07-retrospective.md](docs/07-retrospective.md) | Review of scope, evidence, execution quality, and limitations |
 | [08-environment-and-tools.md](docs/08-environment-and-tools.md) | Environment, tools, techniques |
 | [templates/](templates/) | Bug-report and UX-finding templates |
 | [evidence/EVIDENCE_INDEX.md](evidence/EVIDENCE_INDEX.md) | Evidence index: file → finding |
 
-## Methods that made this case stronger
+## Investigation methods
 
 - **Locale forensics**: analysis of `_locales/ru/messages.json` exposed nonexistent contact information, a key/message mismatch, mixed formal/informal tone, and hidden functionality such as the context menu.
 - **CSV forensics**: comparing UTC timestamps from the export with the local table and chart axis proved the bucketing defect in BUG-2 and explained the event duplication pattern in UX-3.
